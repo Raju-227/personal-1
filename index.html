@@ -1,140 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="te">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MyHome Real Estate</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Amazon-style Logo (HTML + SVG)</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f8f9fa;
-      color: #333;
+    :root{
+      --logo-text-color:#111;
+      --logo-accent:#FF9900; /* orange smile/arrow */
     }
-    header {
-      background: #2c3e50;
-      color: white;
-      padding: 20px;
-      text-align: center;
+    body{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:100vh;
+      margin:0;
+      background: #f6f6f6;
+      font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     }
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-    header p {
-      margin: 5px 0 0;
-      font-size: 1.2rem;
-    }
-    nav {
-      background: #34495e;
-      padding: 10px;
-      text-align: center;
-    }
-    nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    .hero {
-      background: url("https://images.unsplash.com/photo-1568605114967-8130f3a36994") no-repeat center center/cover;
-      height: 400px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      text-shadow: 2px 2px 5px black;
-    }
-    .hero h2 {
-      font-size: 3rem;
-      margin: 0;
-    }
-    .content {
-      padding: 40px;
-      text-align: center;
-    }
-    .content h3 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-    }
-    .properties {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    .card {
+
+    .logo-wrap{
+      padding:20px;
       background: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-      width: 300px;
-      overflow: hidden;
+      border-radius:12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      display:inline-block;
     }
-    .card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
+
+    /* scale the svg responsively */
+    svg.logo{
+      width:320px;         /* change this to scale the logo */
+      height:auto;
+      display:block;
     }
-    .card h4 {
-      margin: 15px;
-    }
-    .card p {
-      margin: 0 15px 15px;
-      color: #555;
-    }
-    footer {
-      background: #2c3e50;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
+
+    /* small screens */
+    @media (max-width:420px){
+      svg.logo{ width:220px; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>MyHome Real Estate</h1>
-    <p>Owned by Raju</p>
-  </header>
+  <div class="logo-wrap">
+    <!-- Inline SVG constructing wordmark-like text + smile/arrow -->
+    <svg class="logo" viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Amazon-style logo">
+      <!-- Word text (simple lowercase wordmark) -->
+      <!-- You can change the text inside <text> to any label you want -->
+      <defs>
+        <style type="text/css"><![CDATA[
+          .word { font: 140px/1 "Arial Black", "Helvetica Black", Gadget, sans-serif; fill: #111; letter-spacing:-6px; }
+        ]]></style>
+        <!-- arrow head marker -->
+        <marker id="arrowhead" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="6" orient="auto">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#FF9900" />
+        </marker>
+      </defs>
 
-  <nav>
-    <a href="#">Home</a>
-    <a href="#">Properties</a>
-    <a href="#">About Us</a>
-    <a href="#">Contact</a>
-  </nav>
+      <!-- The word: change 'amazon' to your shop name if needed -->
+      <text x="20" y="140" class="word">amazon</text>
 
-  <section class="hero">
-    <h2>Your Dream Home Awaits</h2>
-  </section>
+      <!-- Smile / arrow path under the text (from 'a' to 'z') -->
+      <!-- Adjust the path d if you change the word or font size -->
+      <path d="M 75 150 C 210 210, 490 210, 640 150"
+            stroke="#FF9900" stroke-width="18" fill="none" stroke-linecap="round"
+            marker-end="url(#arrowhead)" stroke-linejoin="round" />
 
-  <section class="content">
-    <h3>Featured Properties</h3>
-    <div class="properties">
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" alt="Luxury Villa">
-        <h4>Luxury Villa</h4>
-        <p>Beautiful 4BHK villa with garden and pool.</p>
-      </div>
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1572120360610-d971b9d7767c" alt="Modern Apartment">
-        <h4>Modern Apartment</h4>
-        <p>2BHK apartment with stunning city views.</p>
-      </div>
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154" alt="Family Home">
-        <h4>Family Home</h4>
-        <p>Spacious 3BHK perfect for families.</p>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 MyHome Real Estate | Owned by raju</p>
-  </footer>
+      <!-- Optional small dot under 'i' style or accent (not used here) -->
+    </svg>
+  </div>
 </body>
 </html>
