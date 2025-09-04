@@ -1,140 +1,163 @@
-<!DOCTYPE html>
+<!doctype html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MyHome Real Estate</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Social Login • Demo</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f8f9fa;
-      color: #333;
+    :root{
+      --brand:#1877f2; /* classic social blue */
+      --bg:#f0f2f5;
+      --card:#fff;
+      --text:#1c1e21;
+      --muted:#65676b;
+      --border:#e4e6eb;
+      --shadow:0 10px 20px rgba(0,0,0,.08);
+      --radius:14px;
     }
-    header {
-      background: #2c3e50;
-      color: white;
-      padding: 20px;
-      text-align: center;
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:var(--bg);
     }
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
+    .topbar{
+      position:sticky;top:0;z-index:10;
+      background:var(--card);
+      border-bottom:1px solid var(--border);
     }
-    header p {
-      margin: 5px 0 0;
-      font-size: 1.2rem;
+    .topbar .wrap{
+      max-width:1080px;margin:0 auto;
+      display:flex;align-items:center;gap:12px;
+      padding:12px 16px;
     }
-    nav {
-      background: #34495e;
-      padding: 10px;
-      text-align: center;
+    .brand{
+      font-weight:800;font-size:22px;letter-spacing:.2px;
+      color:var(--brand);
     }
-    nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    .hero {
-      background: url("https://images.unsplash.com/photo-1568605114967-8130f3a36994") no-repeat center center/cover;
-      height: 400px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      text-shadow: 2px 2px 5px black;
-    }
-    .hero h2 {
-      font-size: 3rem;
-      margin: 0;
-    }
-    .content {
-      padding: 40px;
-      text-align: center;
-    }
-    .content h3 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-    }
-    .properties {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    .card {
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-      width: 300px;
-      overflow: hidden;
-    }
-    .card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-    .card h4 {
-      margin: 15px;
-    }
-    .card p {
-      margin: 0 15px 15px;
-      color: #555;
-    }
-    footer {
-      background: #2c3e50;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-    }
+    .spacer{flex:1}
+    .btn{appearance:none;border:0;border-radius:999px;padding:10px 16px;font-weight:600;cursor:pointer}
+    .btn.primary{background:var(--brand);color:#fff}
+    .btn.ghost{background:transparent;border:1px solid var(--border);color:var(--text)}.page{
+  max-width:1080px;margin:24px auto;display:grid;gap:24px;align-items:center;
+  grid-template-columns:1fr; padding:0 16px;
+}
+@media(min-width:900px){
+  .page{grid-template-columns:1.1fr .9fr;}
+}
+
+.hero h1{font-size:42px;line-height:1.1;margin:0 0 8px}
+.hero p{color:var(--muted);font-size:18px;margin:0 0 24px}
+
+.card{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);
+  padding:20px;
+}
+.field{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
+label{font-size:14px;color:var(--muted)}
+input[type="text"],input[type="email"],input[type="password"]{
+  width:100%;padding:14px 12px;border:1px solid var(--border);border-radius:10px;font-size:16px;outline:none;background:#fff;
+}
+input:focus{border-color:var(--brand);box-shadow:0 0 0 3px rgba(24,119,242,.15)}
+.actions{display:flex;flex-direction:column;gap:12px;margin-top:8px}
+.link{color:var(--brand);text-decoration:none;font-size:14px}
+
+.divider{display:flex;align-items:center;gap:12px;margin:16px 0}
+.divider::before,.divider::after{content:"";height:1px;background:var(--border);flex:1}
+
+.new-account{
+  text-align:center;background:#f7f9fc;border:1px dashed var(--border);border-radius:12px;padding:14px;font-size:14px;color:var(--muted)
+}
+
+.footer{max-width:1080px;margin:40px auto 24px;padding:0 16px;color:var(--muted);font-size:12px}
+.links{display:flex;flex-wrap:wrap;gap:10px}
+.links a{color:inherit;text-decoration:none}
+
+.pw-toggle{position:relative}
+.pw-toggle button{position:absolute;right:10px;top:50%;transform:translateY(-50%);border:0;background:transparent;cursor:pointer;font-size:12px;color:var(--brand);}
+
+.mini-note{font-size:12px;color:var(--muted)}
+
   </style>
 </head>
 <body>
-  <header>
-    <h1>MyHome Real Estate</h1>
-    <p>Owned by Raju</p>
-  </header>
-
-  <nav>
-    <a href="#">Home</a>
-    <a href="#">Properties</a>
-    <a href="#">About Us</a>
-    <a href="#">Contact</a>
-  </nav>
-
-  <section class="hero">
-    <h2>Your Dream Home Awaits</h2>
-  </section>
-
-  <section class="content">
-    <h3>Featured Properties</h3>
-    <div class="properties">
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" alt="Luxury Villa">
-        <h4>Luxury Villa</h4>
-        <p>Beautiful 4BHK villa with garden and pool.</p>
-      </div>
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1572120360610-d971b9d7767c" alt="Modern Apartment">
-        <h4>Modern Apartment</h4>
-        <p>2BHK apartment with stunning city views.</p>
-      </div>
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154" alt="Family Home">
-        <h4>Family Home</h4>
-        <p>Spacious 3BHK perfect for families.</p>
-      </div>
+  <header class="topbar">
+    <div class="wrap">
+      <div class="brand" aria-label="Site name">SocialHub</div>
+      <div class="spacer"></div>
+      <button class="btn ghost" onclick="alert('This is a demo page')">Help</button>
+      <button class="btn primary" onclick="document.getElementById('email').focus()">Log in</button>
     </div>
-  </section>
+  </header>  <main class="page">
+    <section class="hero">
+      <h1>Connect with friends and the world around you.</h1>
+      <p>Teliglish/Telugu demo text: "Mee snehitulu tho connect avvandi, photos share cheyyandi, updates choodandi."</p>
+      <ul class="mini-note">
+        <li>Single-file HTML, no frameworks.</li>
+        <li>Educational, Facebook‑style layout (no logos or trademarks).</li>
+      </ul>
+    </section><section aria-label="login form">
+  <div class="card">
+    <form onsubmit="return demoLogin(event)">
+      <div class="field">
+        <label for="email">Email or phone</label>
+        <input id="email" name="email" type="text" autocomplete="username" placeholder="example@mail.com" required />
+      </div>
+      <div class="field pw-toggle">
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" placeholder="••••••••" required />
+        <button type="button" onclick="togglePw()" aria-label="Show or hide password">Show</button>
+      </div>
+      <div class="actions">
+        <button class="btn primary" type="submit">Log In</button>
+        <a class="link" href="#" onclick="alert('Forgot password — demo only')">Forgotten password?</a>
+      </div>
+      <div class="divider"><span class="mini-note">or</span></div>
+      <button class="btn" type="button" style="background:#42b72a;color:#fff" onclick="alert('Create account — demo only')">Create new account</button>
+    </form>
+  </div>
+  <p class="mini-note" style="margin:10px 8px;">Demo only: Do not enter real credentials.</p>
 
-  <footer>
-    <p>&copy; 2025 MyHome Real Estate | Owned by raju</p>
-  </footer>
-</body>
+  <div class="new-account" aria-live="polite" id="loginStatus" hidden>
+    Logged in (demo). Welcome back!
+  </div>
+</section>
+
+  </main>  <footer class="footer">
+    <div class="links">
+      <a href="#">About</a>
+      <a href="#">Help</a>
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Cookies</a>
+      <a href="#">Contact</a>
+      <span class="spacer"></span>
+      <span>© <span id="year"></span> SocialHub Demo</span>
+    </div>
+  </footer>  <script>
+    // Simple year insert
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function togglePw(){
+      const pw = document.getElementById('password');
+      const btn = event.currentTarget;
+      if(pw.type==='password'){ pw.type='text'; btn.textContent='Hide'; }
+      else{ pw.type='password'; btn.textContent='Show'; }
+    }
+
+    function demoLogin(e){
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const pw = document.getElementById('password').value.trim();
+      if(!email || !pw){ return false; }
+      // Fake success
+      const box = document.getElementById('loginStatus');
+      box.hidden = false;
+      box.textContent = Logged in as ${email} (demo).;
+      return false;
+    }
+  </script></body>
 </html>
